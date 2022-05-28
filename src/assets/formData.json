@@ -1,7 +1,8 @@
 [
     {
-        "id": "questionOne",
+        "id": "first_name",
         "label": "What's your name (or nickname)?",
+        "section": "basics",
         "type": "textbox",
         "validators": [
             {
@@ -11,8 +12,212 @@
         ]
     },
     {
-        "id": "questionTwo",
-        "label": "When it comes to vitamins and supplements, you: ",
+          "id": "emailAddress",
+          "label": "Email",
+          "type": "textbox",
+          "section": "goals",
+          "validators": [
+              {
+                  "required": true,
+                  "email": true
+              }
+          ]
+    },
+    {
+      "id": "city",
+      "label": "City",
+      "section": "lifestyle",
+      "type": "autocomplete",
+      "optionsGroup": [
+        {
+          "key":"A",
+          "names":[
+            "Alabama",
+            "Alaska",
+            "Arizona",
+            "Arkansas"
+          ]
+        },
+        {
+          "key":"C",
+          "names":[
+            "California",
+            "Colorado",
+            "Connecticut"
+          ]
+        },
+        {
+          "key":"D",
+          "names":[
+            "Delaware"
+          ]
+        },
+        {
+          "key":"F",
+          "names":[
+            "Florida"
+          ]
+        },
+        {
+          "key":"G",
+          "names":[
+            "Georgia"
+          ]
+        },
+        {
+          "key":"H",
+          "names":[
+            "Hawaii"
+          ]
+        },
+        {
+          "key":"I",
+          "names":[
+            "idaho",
+            "Illinois",
+            "Indiana",
+            "Iowa"
+          ]
+        },
+        {
+          "key":"K",
+          "names":[
+            "Kansas",
+            "Kentucky"
+          ]
+        },
+        {
+          "key":"L",
+          "names":[
+            "Louisiana"
+          ]
+        },
+        {
+          "key":"M",
+          "names":[
+            "Maine",
+            "Maryland",
+            "Massachusetts",
+            "Michigan",
+            "Minnesota",
+            "Mississippi",
+            "Missouri",
+            "Montana"
+          ]
+        },
+        {
+          "key":"N",
+          "names":[
+            "Nebraska",
+            "Nevada",
+            "New Hampshire",
+            "New Jersey",
+            "New Mexico",
+            "New York",
+            "North Carolina",
+            "North Dakota"
+          ]
+        },
+        {
+          "key":"O",
+          "names":[
+            "Ohio",
+            "Oklahoma",
+            "Oregon"
+          ]
+        },
+        {
+          "key":"P",
+          "names":[
+            "Pennsylvania"
+          ]
+        },
+        {
+          "key":"R",
+          "names":[
+            "Rhode Island"
+          ]
+        },
+        {
+          "key":"S",
+          "names":[
+            "South Carolina",
+            "South Dakota"
+          ]
+        },
+        {
+          "key":"T",
+          "names":[
+            "Tennessee",
+            "Texas"
+          ]
+        },
+        {
+          "key":"U",
+          "names":[
+            "Utah"
+          ]
+        },
+        {
+          "key":"V",
+          "names":[
+            "Vermont",
+            "Virginia"
+          ]
+        },
+        {
+          "key":"W",
+          "names":[
+            "Washington",
+            "West Virginia",
+            "Wisconsin",
+            "Wyoming"
+          ]
+        }
+      ],
+      "validators": [
+          {
+              "required": true
+          }
+      ]
+    },
+    {
+        "id": "gender",
+        "label": "Gender",
+        "section": "basics",
+        "type": "radio",
+        "options": [
+          {
+              "key": "male",
+              "label": "Male"
+          },
+          {
+              "key": "female",
+              "label": "Female"
+          }
+          
+      ],
+        "validators": [
+            {
+                "required": true
+            }
+        ]
+    },
+    {
+        "id": "birthdate",
+        "label": "Birthday",
+        "section": "basics",
+        "type": "date",
+        "validators": [
+            {
+                "required": true
+            }
+        ]
+    },
+    {
+        "id": "vit_knowledge",
+        "label": "When it comes to vitamins and supplements, you:",
+        "section": "basics",
         "type": "radio",
         "options": [
           {
@@ -23,13 +228,12 @@
           {
               "key": "knowAbit",
               "label": "Know a bit, but want to learn more.",
-              "points": 0
+              "points": 5
           },
           {
             "key": "areNotConvinced",
             "label": "Are not convinced yet.",
-            "points": 5,
-            "customAnswer": []
+            "points": 0
           }
           
       ],
@@ -40,25 +244,25 @@
         ]
     },
     {
-      "id": "questionThree",
-      "label": "When it comes to vitamins and supplements, you: ",
+      "id": "vit_history_intake",
+      "label": "Have you taken vitamins and/or supplements in the past?",
+      "section": "basics",
       "type": "radio",
       "options": [
         {
-            "key": "knowMore",
-            "label": "Know more than the average person.",
+            "key": "forAwhile",
+            "label": "For a while",
             "points": 10
         },
         {
-            "key": "knowAbit",
-            "label": "Know a bit, but want to learn more.",
-            "points": 0
+            "key": "onAndOff",
+            "label": "On and off",
+            "points": 5
         },
         {
-          "key": "areNotConvinced",
-          "label": "Are not convinced yet.",
-          "points": 5,
-          "customAnswer": []
+          "key": "never",
+          "label": "Never",
+          "points": 0
         }
         
     ],
@@ -68,269 +272,619 @@
           }
       ]
   },
-    {
-        "id": "mobileNo",
-        "label": "Mobile No",
-        "type": "textbox",
-        "validators": [
-            {
-                "required": true
-            }
-        ]
-    },
-    {
-        "id": "emailAddress",
-        "label": "Email",
-        "type": "textbox",
-        "validators": [
-            {
-                "required": true,
-                "email": true
-            }
-        ]
-    },
-    {
-      "id": "hobbies",
-      "label": "Hobbies",
-      "type": "radio",
-      "options": [
-          {
-              "key": "yes",
-              "label": "Yes"
-          },
-          {
-              "key": "no",
-              "label": "No"
-          },
-          {
-            "key": "others",
-            "label": "Others",
-            "customAnswer": []
-          }
-          
-      ],
+  {
+    "id": "vit_current_intake",
+    "label": "How many vitamins or supplements do you currently take?",
+    "section": "basics",
+    "type": "radio",
+    "options": [
+      {
+          "key": "none",
+          "label": "None",
+          "points": 0
+      },
+      {
+          "key": "oneToFour",
+          "label": "1 to 4",
+          "points": 5
+      },
+      {
+        "key": "moreThanFive",
+        "label": "More than 5",
+        "points": 10
+      }  
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "areas_to_improve",
+    "label": "Which areas of your health are you looking to improve?",
+    "section": "goals",
+    "type": "radio",
+    "options": [
+      {
+          "key": "immunity",
+          "label": "Immunity",
+          "points": 0
+      },
+      {
+          "key": "hair",
+          "label": "Hair",
+          "points": 5
+      },
+      {
+        "key": "digestion",
+        "label": "Digestion",
+        "points": 10
+      },
+      {
+        "key": "stress",
+        "label": "Stress",
+        "points": 0
+      },
+      {
+        "key": "brain",
+        "label": "Brain",
+        "points": 0
+      },
+      {
+        "key": "energy",
+        "label": "Energy",
+        "points": 0
+      },
+      {
+        "key": "sleep",
+        "label": "Sleep",
+        "points": 0
+      },
+      {
+        "key": "heart",
+        "label": "Heart",
+        "points": 0
+      },
+      {
+        "key": "skin",
+        "label": "Skin",
+        "points": 0
+      },
+      {
+        "key": "joints",
+        "label": "Joints",
+        "points": 0
+      },
+      {
+        "key": "bones",
+        "label": "Bones",
+        "points": 0
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "energy_levels",
+    "label": "Rate your energy levels",
+    "section": "goals",
+    "type": "dropdown",
+    "options": [
+      {
+          "key": "very_low",
+          "label": "Very Low",
+          "points": 0
+      },
+      {
+          "key": "low",
+          "label": "Low",
+          "points": 5
+      },
+      {
+        "key": "moderate",
+        "label": "Moderate",
+        "points": 10
+      },
+      {
+        "key": "above_average",
+        "label": "Above Average",
+        "points": 0
+      },
+      {
+        "key": "high",
+        "label": "High",
+        "points": 0
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "energy_slumps",
+    "label": "Do you often experience energy slumps throughout the day?",
+    "section": "goals",
+    "type": "radio",
+    "options": [
+      {
+          "key": "yes",
+          "label": "Yes",
+          "points": 0
+      },
+      {
+          "key": "no",
+          "label": "No",
+          "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "trouble_focus",
+    "label": "Do you feel you have trouble focusing or concentrating on tasks?",
+    "section": "goals",
+    "type": "radio",
+    "options": [
+      {
+          "key": "yes",
+          "label": "Yes",
+          "points": 0
+      },
+      {
+          "key": "no",
+          "label": "No",
+          "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "brain_fog",
+    "label": "How often do you experience brain fog?",
+    "section": "goals",
+    "type": "dropdown",
+    "options": [
+      {
+          "key": "everyday",
+          "label": "Almost every day",
+          "points": 0
+      },
+      {
+          "key": "once_or_twice",
+          "label": "Once or twice a week",
+          "points": 5
+      },
+      {
+        "key": "never",
+        "label": "Never",
+        "points": 5
+    }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "short_term_memory_support",
+    "label": "Do you need support with your short term memory?",
+    "section": "goals",
+    "type": "radio",
+    "options": [
+      {
+          "key": "yes",
+          "label": "Yes",
+          "points": 0
+      },
+      {
+          "key": "no",
+          "label": "No",
+          "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "diet_description",
+    "label": "How would you describe your diet?",
+    "section": "diet",
+    "type": "dropdown",
+    "options": [
+      {
+          "key": "eat_everything",
+          "label": "I eat almost everything!",
+          "points": 0
+      },
+      {
+          "key": "plant_based",
+          "label": "Prefer plant-based foods",
+          "points": 5
+      },
+      {
+        "key": "vegetarian",
+        "label": "Vegetarian",
+        "points": 5
+      },
+      {
+        "key": "vegan",
+        "label": "Vegan",
+        "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "meat_intake",
+    "label": "How often do you eat meat?",
+    "section": "diet",
+    "type": "dropdown",
+    "options": [
+      {
+          "key": "never",
+          "label": "Never",
+          "points": 0
+      },
+      {
+          "key": "rarely",
+          "label": "Rarely",
+          "points": 5
+      },
+      {
+        "key": "once_or_twice",
+        "label": "Once or twice per week",
+        "points": 5
+      },
+      {
+        "key": "three_times_or_more",
+        "label": "Three times per week or more",
+        "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "support_sugar",
+    "label": "Do you need support in managing intense sugar cravings throughout the day?",
+    "section": "diet",
+    "type": "radio",
+    "options": [
+      {
+          "key": "yes",
+          "label": "Yes",
+          "points": 0
+      },
+      {
+          "key": "no",
+          "label": "No",
+          "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "support_sugar",
+    "label": "Do you need support in managing intense sugar cravings throughout the day?",
+    "section": "diet",
+    "type": "radio",
+    "options": [
+      {
+          "key": "yes",
+          "label": "Yes",
+          "points": 0
+      },
+      {
+          "key": "no",
+          "label": "No",
+          "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "allergies",
+    "label": "Are you allergic to any of the following?",
+    "section": "diet",
+    "type": "radio",
+    "options": [
+      {
+          "key": "wheat_gluten",
+          "label": "Wheat and/or Gluten",
+          "points": 0
+      },
+      {
+        "key": "fish",
+        "label": "Fish",
+        "points": 0
+      },
+      {
+        "key": "soy",
+        "label": "Soy",
+        "points": 0
+      },
+      {
+          "key": "others",
+          "label": "Others",
+          "points": 5,
+          "customAnswer": []
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "exercise",
+    "label": "How many days per week do you exercise on average?",
+    "section": "lifestyle",
+    "type": "dropdown",
+    "options": [
+      {
+          "key": "never",
+          "label": "I don't exercise",
+          "points": 0
+      },
+      {
+          "key": "once",
+          "label": "1",
+          "points": 5
+      },
+      {
+        "key": "two_or_three",
+        "label": "2-3",
+        "points": 5
+      },
+      {
+        "key": "four_or_more",
+        "label": "4 or more",
+        "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "exercise_tyoe",
+    "label": "What type of exercise do you engage in?",
+    "section": "lifestyle",
+    "type": "radio",
+    "options": [
+      {
+          "key": "never",
+          "label": "Cardio (running, cycling, HIIT)",
+          "points": 0
+      },
+      {
+          "key": "once",
+          "label": "Core and stretching (Yoga, Pilates)",
+          "points": 5
+      },
+      {
+        "key": "two_or_three",
+        "label": "Walking, hiking",
+        "points": 5
+      },
+      {
+        "key": "four_or_more",
+        "label": "Weightlifting, strength training",
+        "points": 5
+      },
+      {
+        "key": "others",
+        "label": "Others",
+        "points": 5,
+        "customAnswer": []
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "exercise_intensity",
+    "label": "How would you rate the intensity of the exercise you engage in?",
+    "section": "lifestyle",
+    "type": "dropdown",
+    "options": [
+      {
+          "key": "very_low",
+          "label": "Very Low",
+          "points": 0
+      },
+      {
+          "key": "low",
+          "label": "Low",
+          "points": 5
+      },
+      {
+        "key": "moderate",
+        "label": "Moderate",
+        "points": 5
+      },
+      {
+        "key": "above_average",
+        "label": "Above Average",
+        "points": 5
+      },
+      {
+        "key": "high",
+        "label": "High",
+        "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "muscle_cramps",
+    "label": "Do you often experience muscle cramps or soreness after exercising?",
+    "section": "lifestyle",
+    "type": "radio",
+    "options": [
+      {
+          "key": "very_low",
+          "label": "Very Low",
+          "points": 0
+      },
+      {
+          "key": "low",
+          "label": "Low",
+          "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "consume_alcohol",
+    "label": "Do you often consume 8 or more alcoholic drinks in a week?",
+    "section": "lifestyle",
+    "type": "radio",
+    "options": [
+      {
+          "key": "yes",
+          "label": "Yes",
+          "points": 0
+      },
+      {
+          "key": "no",
+          "label": "No",
+          "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "smoke",
+    "label": "Do you smoke?",
+    "section": "lifestyle",
+    "type": "radio",
+    "options": [
+      {
+          "key": "yes",
+          "label": "Yes",
+          "points": 0
+      },
+      {
+          "key": "no",
+          "label": "No",
+          "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "urinary_tract",
+    "label": "Do you feel you need support with your urinary tract health?",
+    "section": "lifestyle",
+    "type": "radio",
+    "options": [
+      {
+          "key": "yes",
+          "label": "Yes",
+          "points": 0
+      },
+      {
+          "key": "no",
+          "label": "No",
+          "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  {
+    "id": "iron_intake",
+    "label": "Has your doctor recommended that you take iron?",
+    "section": "lifestyle",
+    "type": "radio",
+    "options": [
+      {
+          "key": "yes",
+          "label": "Yes",
+          "points": 0
+      },
+      {
+          "key": "no",
+          "label": "No",
+          "points": 5
+      }
+    ],
+    "validators": [
+        {
+            "required": true
+        }
+    ]
+  },
+  
+  {
+      "id": "comment",
+      "label": "Comment",
+      "section": "lifestyle",
+      "type": "textbox",
+      "multiline": true,
       "validators": [
           {
               "required": true
           }
       ]
-  },
-    {
-        "id": "birthdate",
-        "label": "DOB",
-        "type": "date",
-        "validators": [
-            {
-                "required": true
-            }
-        ]
-    },
-    {
-        "id": "address",
-        "label": "Address",
-        "type": "textbox",
-        "multiline": true,
-        "validators": [
-            {
-                "required": true
-            }
-        ]
-    },
-    {
-        "id": "city",
-        "label": "City",
-        "type": "dropdown",
-        "options": [
-            {
-                "key": "MNL",
-                "label": "Metro Manila"
-            },
-            {
-                "key": "PQUE",
-                "label": "Paranaque"
-            },
-            {
-                "key": "LPN",
-                "label": "Las Pinas"
-            },
-            {
-                "key": "MKT",
-                "label": "Makati"
-            },
-            {
-                "key": "TAG",
-                "label": "Taguig"
-            },
-            {
-                "key": "MAND",
-                "label": "Mandaluyong"
-            },
-            {
-                "key": "QUE",
-                "label": "Quezon"
-            }
-        ],
-        "validators": [
-            {
-                "required": true
-            }
-        ]
-    },
-    {
-        "id": "stateGroup",
-        "label": "State",
-        "type": "autocomplete",
-        "optionsGroup": [
-            {
-              "key":"A",
-              "names":[
-                "Alabama",
-                "Alaska",
-                "Arizona",
-                "Arkansas"
-              ]
-            },
-            {
-              "key":"C",
-              "names":[
-                "California",
-                "Colorado",
-                "Connecticut"
-              ]
-            },
-            {
-              "key":"D",
-              "names":[
-                "Delaware"
-              ]
-            },
-            {
-              "key":"F",
-              "names":[
-                "Florida"
-              ]
-            },
-            {
-              "key":"G",
-              "names":[
-                "Georgia"
-              ]
-            },
-            {
-              "key":"H",
-              "names":[
-                "Hawaii"
-              ]
-            },
-            {
-              "key":"I",
-              "names":[
-                "idaho",
-                "Illinois",
-                "Indiana",
-                "Iowa"
-              ]
-            },
-            {
-              "key":"K",
-              "names":[
-                "Kansas",
-                "Kentucky"
-              ]
-            },
-            {
-              "key":"L",
-              "names":[
-                "Louisiana"
-              ]
-            },
-            {
-              "key":"M",
-              "names":[
-                "Maine",
-                "Maryland",
-                "Massachusetts",
-                "Michigan",
-                "Minnesota",
-                "Mississippi",
-                "Missouri",
-                "Montana"
-              ]
-            },
-            {
-              "key":"N",
-              "names":[
-                "Nebraska",
-                "Nevada",
-                "New Hampshire",
-                "New Jersey",
-                "New Mexico",
-                "New York",
-                "North Carolina",
-                "North Dakota"
-              ]
-            },
-            {
-              "key":"O",
-              "names":[
-                "Ohio",
-                "Oklahoma",
-                "Oregon"
-              ]
-            },
-            {
-              "key":"P",
-              "names":[
-                "Pennsylvania"
-              ]
-            },
-            {
-              "key":"R",
-              "names":[
-                "Rhode Island"
-              ]
-            },
-            {
-              "key":"S",
-              "names":[
-                "South Carolina",
-                "South Dakota"
-              ]
-            },
-            {
-              "key":"T",
-              "names":[
-                "Tennessee",
-                "Texas"
-              ]
-            },
-            {
-              "key":"U",
-              "names":[
-                "Utah"
-              ]
-            },
-            {
-              "key":"V",
-              "names":[
-                "Vermont",
-                "Virginia"
-              ]
-            },
-            {
-              "key":"W",
-              "names":[
-                "Washington",
-                "West Virginia",
-                "Wisconsin",
-                "Wyoming"
-              ]
-            }
-        ],
-        "validators": [
-            {
-                "required": true
-            }
-        ]
-    }
+  }
 ]

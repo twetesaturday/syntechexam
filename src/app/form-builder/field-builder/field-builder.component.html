@@ -1,0 +1,37 @@
+<div [ngSwitch]="control.type">
+    <div *ngSwitchCase="eFormControlType.Textbox">
+        <text-box 
+            [control]="control" 
+            [form]="form">
+        </text-box>
+    </div>
+
+    <div *ngSwitchCase="eFormControlType.Date">
+        <date
+            [control]="control" 
+            [form]="form">
+        </date>
+    </div>
+
+    <div *ngSwitchCase="eFormControlType.Radio">
+        <radio
+            (selectedRadioValue)="onRadioValueSelect($event)"
+            [control]="control" 
+            [form]="form">
+        </radio>
+    </div>
+
+    <div *ngSwitchCase="eFormControlType.Dropdown">
+        <dropdown
+            [control]="control" 
+            [form]="form">
+        </dropdown>
+    </div>
+
+    <div *ngSwitchCase="eFormControlType.Autocomplete">
+        <autocomplete
+            [control]="control" 
+            [form]="form">
+        </autocomplete>
+    </div>
+</div>

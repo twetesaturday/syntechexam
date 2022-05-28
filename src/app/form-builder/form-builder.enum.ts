@@ -5,3 +5,10 @@ export enum FormControlType {
     Dropdown = 'dropdown',
     Autocomplete = 'autocomplete'
 }
+
+export enum FormSections {
+    Basics = 'basics', 
+    Goals = 'goals',
+    Diet = 'diet', 
+    Lifestyle = 'lifestyle'
+}

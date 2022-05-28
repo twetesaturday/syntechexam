@@ -21,9 +21,7 @@
         *ngIf="isOthersSelected" 
         appearance="fill">
         <mat-label>{{ control.label }}</mat-label>
-        <mat-chip-list #chipList 
-            [formControlName]="control.id"    
-            aria-label="Custom Answer">
+        <mat-chip-list #chipList [formControlName]="control.id">
             <mat-chip *ngFor="let customAnswer of customAnswers" (removed)="remove(customAnswer)">
                 {{ customAnswer.value }}
                 <button matChipRemove>

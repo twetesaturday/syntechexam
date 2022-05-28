@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormControlData, FormData, FormValidators } from '../interfaces/form-interface';
 import { FormService } from '../services/form/form.service';
-import { FormControlType } from './form-builder.enum';
+import { FormSections } from './form-builder.enum';
 
 @Component({
   selector: 'form-builder',
@@ -11,12 +11,12 @@ import { FormControlType } from './form-builder.enum';
 })
 export class FormBuilderComponent implements OnInit {
   @Input() formData!: FormControlData;
-  @Input() formGroupData!: FormGroup;
+  @Input() basicsFormGroup!: FormGroup;
+  @Input() goalsFormGroup!: FormGroup;
+  @Input() dietFormGroup!: FormGroup;
+  @Input() lifestyleFormGroup!: FormGroup;
 
-  eFormControlType = FormControlType;
-  secondFormGroup!: FormGroup;
-
-  totalPoints: number = 0;
+  eFormSections = FormSections;
 
   constructor(private formService: FormService, private _formBuilder: FormBuilder) { }
 
@@ -26,13 +26,13 @@ export class FormBuilderComponent implements OnInit {
   }
 
   initializeFormGroups() {
-    this.formGroupData = this._formBuilder.group({
-      stateGroup: '',
-    });
+    this.basicsFormGroup = this._formBuilder.group({});
 
-    this.secondFormGroup = this._formBuilder.group({
-      stateGroup: '',
-    });
+    this.goalsFormGroup = this._formBuilder.group({});
+
+    this.dietFormGroup = this._formBuilder.group({});
+
+    this.lifestyleFormGroup = this._formBuilder.group({});
   }
 
   getFormData () {
@@ -47,27 +47,27 @@ export class FormBuilderComponent implements OnInit {
     formData.forEach((element: FormData) => {
       if (element.validators) {
         element.validators.forEach((validator: FormValidators) => {
-          this.formGroupData.addControl(element.id, new FormControl('', this._getValidators(validator)));
+          this.createFormControlWithValidators(element, validator);
         })
-      } else {
-        this.formGroupData.addControl(element.id, new FormControl(''));
       }
     });
   }
 
-  onRadioValueSelect(event: any) {
-    // TODO: Count points on next button
-    console.log('SELECTED RADIO VALUE', event);
-    const selectedValue = event.selectedValue;
-    const control = event.control;
-    if (event) {
-       const selectedOption = control.options.find((option: any) => option.key === selectedValue);
-       console.log('HELLO', selectedOption.points);
-       if (selectedOption.points) {
-        this.totalPoints += selectedOption.points;
-       }
+  createFormControlWithValidators(element: FormData, validator: FormValidators) {
+    switch(element.section) {
+      case FormSections.Basics:
+        this.basicsFormGroup.addControl(element.id, new FormControl('', this._getValidators(validator)));
+        break;
+      case FormSections.Goals:
+        this.goalsFormGroup.addControl(element.id, new FormControl('', this._getValidators(validator)));
+        break;
+      case FormSections.Diet:
+        this.dietFormGroup.addControl(element.id, new FormControl('', this._getValidators(validator)));
+        break;
+      case FormSections.Lifestyle:
+        this.lifestyleFormGroup.addControl(element.id, new FormControl('', this._getValidators(validator)));
+        break;
     }
-    console.log('TOTAL POINTS', this.totalPoints);
   }
 
   private _getValidators(validator: FormValidators): any {

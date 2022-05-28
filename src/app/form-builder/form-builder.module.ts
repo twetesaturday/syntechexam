@@ -9,6 +9,7 @@ import { RadioComponent } from './fields/radio/radio.component';
 import { DropdownComponent } from './fields/dropdown/dropdown.component';
 import { AutocompleteComponent } from './fields/autocomplete/autocomplete.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FieldBuilderComponent } from './field-builder/field-builder.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     DateComponent,
     RadioComponent,
     DropdownComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    FieldBuilderComponent
   ],
   exports: [FormBuilderComponent],
   providers: []

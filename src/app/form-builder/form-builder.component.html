@@ -8,77 +8,86 @@
         <mat-stepper 
             orientation="vertical" 
             #stepper>
-            <mat-step [stepControl]="formGroupData">
-                <form [formGroup]="formGroupData">
-                <ng-template matStepLabel>Fill out your name</ng-template>
-                    <div *ngFor="let control of formData">
-                        <div [ngSwitch]="control.type">
-
-                            <div *ngSwitchCase="eFormControlType.Textbox">
-                                <text-box 
-                                    [control]="control" 
-                                    [form]="formGroupData">
-                                </text-box>
-                            </div>
-
-                            <div *ngSwitchCase="eFormControlType.Date">
-                                <date
-                                    [control]="control" 
-                                    [form]="formGroupData">
-                                </date>
-                            </div>
-
-                            <div *ngSwitchCase="eFormControlType.Radio">
-                                <radio
-                                    (selectedRadioValue)="onRadioValueSelect($event)"
-                                    [control]="control" 
-                                    [form]="formGroupData">
-                                </radio>
-                            </div>
-
-                            <div *ngSwitchCase="eFormControlType.Dropdown">
-                                <dropdown
-                                    [control]="control" 
-                                    [form]="formGroupData">
-                                </dropdown>
-                            </div>
-
-                            <div *ngSwitchCase="eFormControlType.Autocomplete">
-                                <autocomplete
-                                    [control]="control" 
-                                    [form]="formGroupData">
-                                </autocomplete>
-                            </div>
-                        </div>
+            <mat-step [stepControl]="basicsFormGroup">
+                <div *ngFor="let control of formData">
+                    <div *ngIf="control.section === eFormSections.Basics">
+                        <form [formGroup]="basicsFormGroup">
+                            <ng-template matStepLabel>{{ eFormSections.Basics.toUpperCase() }}</ng-template>
+                            <field-builder
+                                [control]="control" 
+                                [form]="basicsFormGroup">
+                            </field-builder>
+                        </form>
                     </div>
-                <div>
+                </div>
+                <div class="mat-stepper-buttons">
                     <button mat-button matStepperNext>Next</button>
                 </div>
-                </form>
             </mat-step>
-            <!-- <mat-step [stepControl]="secondFormGroup">
-                <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>Fill out your address</ng-template>
-                <mat-form-field appearance="fill">
-                    <mat-label>Address</mat-label>
-                    <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                            required>
-                </mat-form-field>
-                <div>
+            <mat-step [stepControl]="goalsFormGroup">
+                <div *ngFor="let control of formData">
+                    <div *ngIf="control.section === eFormSections.Goals">
+                        <form [formGroup]="goalsFormGroup">
+                            <ng-template matStepLabel>{{ eFormSections.Goals.toUpperCase() }}</ng-template>
+                            <field-builder
+                                [control]="control" 
+                                [form]="goalsFormGroup">
+                            </field-builder>
+                        </form>
+                    </div>
+                </div>
+                <div class="mat-stepper-buttons">
                     <button mat-button matStepperPrevious>Back</button>
                     <button mat-button matStepperNext>Next</button>
                 </div>
-                </form>
-            </mat-step> -->
+            </mat-step>
+             <mat-step [stepControl]="dietFormGroup">
+                <div *ngFor="let control of formData">
+                    <div *ngIf="control.section === eFormSections.Diet">
+                        <form [formGroup]="dietFormGroup">
+                            <ng-template matStepLabel>{{ eFormSections.Diet.toUpperCase() }}</ng-template>
+                            <field-builder
+                                [control]="control" 
+                                [form]="dietFormGroup">
+                            </field-builder>
+                        </form>
+                    </div>
+                </div>
+                <div class="mat-stepper-buttons">
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+             <mat-step [stepControl]="lifestyleFormGroup">
+                <div *ngFor="let control of formData">
+                    <div *ngIf="control.section === eFormSections.Lifestyle">
+                        <form [formGroup]="lifestyleFormGroup">
+                            <ng-template matStepLabel>{{ eFormSections.Lifestyle.toUpperCase() }}</ng-template>
+                            <field-builder
+                                [control]="control" 
+                                [form]="lifestyleFormGroup">
+                            </field-builder>
+                        </form>
+                    </div>
+                </div>
+                <div class="mat-stepper-buttons">
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
             <mat-step>
                 <ng-template matStepLabel>Done</ng-template>
                 <p>You are now done.</p>
+                <pre>BASICS FORM: {{ basicsFormGroup.value | json }}</pre>
+                <pre>GOALS FORM: {{ goalsFormGroup.value | json }}</pre>
+                <pre>DIET FORM: {{ dietFormGroup.value | json }}</pre>
+                <pre>LIFESTYLE FORM: {{ lifestyleFormGroup.value | json }}</pre>
                 <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button (click)="stepper.reset()">Reset</button>
                 </div>
             </mat-step>
-            </mat-stepper>
+        </mat-stepper>
     </mat-card-content>
     
     <!-- <mat-card-actions align="end">
@@ -89,5 +98,3 @@
             color="primary">Save</button>
     </mat-card-actions> -->
 </mat-card>
-
-<pre>{{ formGroupData.value | json }}</pre>
