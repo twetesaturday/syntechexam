@@ -30,6 +30,7 @@
 
                             <div *ngSwitchCase="eFormControlType.Radio">
                                 <radio
+                                    (selectedRadioValue)="onRadioValueSelect($event)"
                                     [control]="control" 
                                     [form]="formGroupData">
                                 </radio>

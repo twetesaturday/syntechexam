@@ -16,6 +16,8 @@ export class FormBuilderComponent implements OnInit {
   eFormControlType = FormControlType;
   secondFormGroup!: FormGroup;
 
+  totalPoints: number = 0;
+
   constructor(private formService: FormService, private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -37,12 +39,12 @@ export class FormBuilderComponent implements OnInit {
     this.formService.getJSONFormData()
       .subscribe((response: FormControlData) => {
         this.formData = response;
-        this.createFormControl();
+        this.createFormControl(response);
       })
   }
 
-  createFormControl() {
-    this.formData.forEach((element: FormData) => {
+  createFormControl(formData: FormControlData) {
+    formData.forEach((element: FormData) => {
       if (element.validators) {
         element.validators.forEach((validator: FormValidators) => {
           this.formGroupData.addControl(element.id, new FormControl('', this._getValidators(validator)));
@@ -51,6 +53,21 @@ export class FormBuilderComponent implements OnInit {
         this.formGroupData.addControl(element.id, new FormControl(''));
       }
     });
+  }
+
+  onRadioValueSelect(event: any) {
+    // TODO: Count points on next button
+    console.log('SELECTED RADIO VALUE', event);
+    const selectedValue = event.selectedValue;
+    const control = event.control;
+    if (event) {
+       const selectedOption = control.options.find((option: any) => option.key === selectedValue);
+       console.log('HELLO', selectedOption.points);
+       if (selectedOption.points) {
+        this.totalPoints += selectedOption.points;
+       }
+    }
+    console.log('TOTAL POINTS', this.totalPoints);
   }
 
   private _getValidators(validator: FormValidators): any {

@@ -17,15 +17,18 @@
         "options": [
           {
               "key": "knowMore",
-              "label": "Know more than the average person."
+              "label": "Know more than the average person.",
+              "points": 10
           },
           {
               "key": "knowAbit",
-              "label": "Know a bit, but want to learn more."
+              "label": "Know a bit, but want to learn more.",
+              "points": 0
           },
           {
             "key": "areNotConvinced",
             "label": "Are not convinced yet.",
+            "points": 5,
             "customAnswer": []
           }
           
@@ -36,6 +39,35 @@
             }
         ]
     },
+    {
+      "id": "questionThree",
+      "label": "When it comes to vitamins and supplements, you: ",
+      "type": "radio",
+      "options": [
+        {
+            "key": "knowMore",
+            "label": "Know more than the average person.",
+            "points": 10
+        },
+        {
+            "key": "knowAbit",
+            "label": "Know a bit, but want to learn more.",
+            "points": 0
+        },
+        {
+          "key": "areNotConvinced",
+          "label": "Are not convinced yet.",
+          "points": 5,
+          "customAnswer": []
+        }
+        
+    ],
+      "validators": [
+          {
+              "required": true
+          }
+      ]
+  },
     {
         "id": "mobileNo",
         "label": "Mobile No",

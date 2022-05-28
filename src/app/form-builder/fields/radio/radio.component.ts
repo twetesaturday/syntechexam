@@ -1,5 +1,5 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatRadioChange } from '@angular/material/radio';
@@ -13,6 +13,7 @@ import { FormCustomAnswer, FormData } from '../../../interfaces/form-interface';
 export class RadioComponent {
   @Input() control!: FormData;
   @Input() form!: FormGroup;
+  @Output() selectedRadioValue = new EventEmitter<object>();
 
   isOthersSelected = false;
   addOnBlur = true;
@@ -29,6 +30,11 @@ export class RadioComponent {
   onRadioChange(event: MatRadioChange) {
     let selected = event.value;
 
+    this.selectedRadioValue.emit({
+      selectedValue: selected,
+      control: this.control
+    });
+
     if (selected === 'others') {
       this.isOthersSelected = true;
     } else {
@@ -42,13 +48,11 @@ export class RadioComponent {
     if (value) {
       this.customAnswers.push({value: value});
       
-      this.form.controls['hobbies'].setValue(this.customAnswers);
+      this.form.controls[this.control.id].setValue(this.customAnswers);
     }
 
     // Clear the input value
-    if (event.input) {
-      event.input.value = '';
-    }
+    event.chipInput!.clear();
   }
 
   remove(customAnswer: FormCustomAnswer): void {
