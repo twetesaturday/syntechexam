@@ -1,7 +1,7 @@
 [
     {
-        "id": "firstName",
-        "label": "First Name",
+        "id": "questionOne",
+        "label": "What's your name (or nickname)?",
         "type": "textbox",
         "validators": [
             {
@@ -11,9 +11,25 @@
         ]
     },
     {
-        "id": "lastName",
-        "label": "Last Name",
-        "type": "textbox",
+        "id": "questionTwo",
+        "label": "When it comes to vitamins and supplements, you: ",
+        "type": "radio",
+        "options": [
+          {
+              "key": "knowMore",
+              "label": "Know more than the average person."
+          },
+          {
+              "key": "knowAbit",
+              "label": "Know a bit, but want to learn more."
+          },
+          {
+            "key": "areNotConvinced",
+            "label": "Are not convinced yet.",
+            "customAnswer": []
+          }
+          
+      ],
         "validators": [
             {
                 "required": true

@@ -3,12 +3,11 @@
     <mat-card>
 
         <mat-card-header>
-            <mat-card-title>Questionnaire App by Tweets</mat-card-title>
+            <mat-card-title>Fit Vit</mat-card-title>
+            <mat-card-subtitle>Your personalized vitamins.</mat-card-subtitle>
         </mat-card-header>
-        <div>{{ formGroupData.value | json }}</div>
 
         <mat-card-content>
-
             <div *ngFor="let control of formData">
                 <div [ngSwitch]="control.type">
 
@@ -51,13 +50,14 @@
 
         </mat-card-content>
         
-        <mat-card-actions>
+        <mat-card-actions align="end">
+            <strong>Saved all values</strong>
             <button 
                 type="submit" 
                 mat-raised-button 
                 color="primary">Save</button>
-            <strong>      Saved all values</strong>
         </mat-card-actions>
-
     </mat-card>
+
+    <pre>{{ formGroupData.value | json }}</pre>
 </form>

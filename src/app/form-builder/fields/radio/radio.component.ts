@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatRadioChange } from '@angular/material/radio';
-import { FormCustomAnswer, FormData } from '../../../form-interface';
+import { FormCustomAnswer, FormData } from '../../../interfaces/form-interface';
 
 @Component({
   selector: 'radio',

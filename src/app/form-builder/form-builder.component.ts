@@ -1,11 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/internal/Observable';
-import { FormControlData, FormData, FormValidators } from '../form-interface';
+import { FormControlData, FormData, FormValidators } from '../interfaces/form-interface';
+import { FormService } from '../services/form/form.service';
 import { FormControlType } from './form-builder.enum';
-import {BreakpointObserver} from '@angular/cdk/layout';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'form-builder',
@@ -18,20 +15,25 @@ export class FormBuilderComponent implements OnInit {
 
   eFormControlType = FormControlType;
 
-  constructor(private httpClient: HttpClient, private _formBuilder: FormBuilder) { }
+  constructor(private formService: FormService, private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.initializeFormGroups();
+    this.getFormData();
+  }
+
+  initializeFormGroups() {
     this.formGroupData = this._formBuilder.group({
       stateGroup: '',
     });
+  }
 
-    this.httpClient
-      .get<FormControlData>('/assets/formData.json')
-      .subscribe((data: FormControlData) => {
-        this.formData = data;
+  getFormData () {
+    this.formService.getJSONFormData()
+      .subscribe((response: FormControlData) => {
+        this.formData = response;
         this.createFormControl();
       })
-
   }
 
   createFormControl() {

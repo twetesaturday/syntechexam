@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormData } from '../../../form-interface';
+import { FormData } from '../../../interfaces/form-interface';
 
 @Component({
   selector: 'date',
