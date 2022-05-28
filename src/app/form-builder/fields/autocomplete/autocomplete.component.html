@@ -1,0 +1,25 @@
+<div [formGroup]="form">
+    <mat-form-field appearance="fill">
+        <mat-label>States Group</mat-label>
+    <input type="text"
+            matInput
+            [formControlName]="control.id"
+            required
+            [matAutocomplete]="autoGroup"
+            autocomplete="do-not-autofill">
+        <mat-autocomplete #autoGroup="matAutocomplete">
+            <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.key">
+                <mat-option *ngFor="let name of group.names" [value]="name">
+                {{name}}
+                </mat-option>
+            </mat-optgroup>
+        </mat-autocomplete>
+        <mat-error 
+            *ngIf="form.get(control.id)?.dirty || form.get(control.id)?.touched">
+            <span 
+                *ngIf="!form.get(control.id)?.valid">
+                {{ control.label }} is required!
+            </span>
+        </mat-error>
+    </mat-form-field>           
+</div>

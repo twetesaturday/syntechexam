@@ -1,0 +1,288 @@
+[
+    {
+        "id": "firstName",
+        "label": "First Name",
+        "type": "textbox",
+        "validators": [
+            {
+                "required": true,
+                "minLength": 10
+            }
+        ]
+    },
+    {
+        "id": "lastName",
+        "label": "Last Name",
+        "type": "textbox",
+        "validators": [
+            {
+                "required": true
+            }
+        ]
+    },
+    {
+        "id": "mobileNo",
+        "label": "Mobile No",
+        "type": "textbox",
+        "validators": [
+            {
+                "required": true
+            }
+        ]
+    },
+    {
+        "id": "emailAddress",
+        "label": "Email",
+        "type": "textbox",
+        "validators": [
+            {
+                "required": true,
+                "email": true
+            }
+        ]
+    },
+    {
+      "id": "hobbies",
+      "label": "Hobbies",
+      "type": "radio",
+      "options": [
+          {
+              "key": "yes",
+              "label": "Yes"
+          },
+          {
+              "key": "no",
+              "label": "No"
+          },
+          {
+            "key": "others",
+            "label": "Others",
+            "customAnswer": []
+          }
+          
+      ],
+      "validators": [
+          {
+              "required": true
+          }
+      ]
+  },
+    {
+        "id": "birthdate",
+        "label": "DOB",
+        "type": "date",
+        "validators": [
+            {
+                "required": true
+            }
+        ]
+    },
+    {
+        "id": "address",
+        "label": "Address",
+        "type": "textbox",
+        "multiline": true,
+        "validators": [
+            {
+                "required": true
+            }
+        ]
+    },
+    {
+        "id": "city",
+        "label": "City",
+        "type": "dropdown",
+        "options": [
+            {
+                "key": "MNL",
+                "label": "Metro Manila"
+            },
+            {
+                "key": "PQUE",
+                "label": "Paranaque"
+            },
+            {
+                "key": "LPN",
+                "label": "Las Pinas"
+            },
+            {
+                "key": "MKT",
+                "label": "Makati"
+            },
+            {
+                "key": "TAG",
+                "label": "Taguig"
+            },
+            {
+                "key": "MAND",
+                "label": "Mandaluyong"
+            },
+            {
+                "key": "QUE",
+                "label": "Quezon"
+            }
+        ],
+        "validators": [
+            {
+                "required": true
+            }
+        ]
+    },
+    {
+        "id": "stateGroup",
+        "label": "State",
+        "type": "autocomplete",
+        "optionsGroup": [
+            {
+              "key":"A",
+              "names":[
+                "Alabama",
+                "Alaska",
+                "Arizona",
+                "Arkansas"
+              ]
+            },
+            {
+              "key":"C",
+              "names":[
+                "California",
+                "Colorado",
+                "Connecticut"
+              ]
+            },
+            {
+              "key":"D",
+              "names":[
+                "Delaware"
+              ]
+            },
+            {
+              "key":"F",
+              "names":[
+                "Florida"
+              ]
+            },
+            {
+              "key":"G",
+              "names":[
+                "Georgia"
+              ]
+            },
+            {
+              "key":"H",
+              "names":[
+                "Hawaii"
+              ]
+            },
+            {
+              "key":"I",
+              "names":[
+                "idaho",
+                "Illinois",
+                "Indiana",
+                "Iowa"
+              ]
+            },
+            {
+              "key":"K",
+              "names":[
+                "Kansas",
+                "Kentucky"
+              ]
+            },
+            {
+              "key":"L",
+              "names":[
+                "Louisiana"
+              ]
+            },
+            {
+              "key":"M",
+              "names":[
+                "Maine",
+                "Maryland",
+                "Massachusetts",
+                "Michigan",
+                "Minnesota",
+                "Mississippi",
+                "Missouri",
+                "Montana"
+              ]
+            },
+            {
+              "key":"N",
+              "names":[
+                "Nebraska",
+                "Nevada",
+                "New Hampshire",
+                "New Jersey",
+                "New Mexico",
+                "New York",
+                "North Carolina",
+                "North Dakota"
+              ]
+            },
+            {
+              "key":"O",
+              "names":[
+                "Ohio",
+                "Oklahoma",
+                "Oregon"
+              ]
+            },
+            {
+              "key":"P",
+              "names":[
+                "Pennsylvania"
+              ]
+            },
+            {
+              "key":"R",
+              "names":[
+                "Rhode Island"
+              ]
+            },
+            {
+              "key":"S",
+              "names":[
+                "South Carolina",
+                "South Dakota"
+              ]
+            },
+            {
+              "key":"T",
+              "names":[
+                "Tennessee",
+                "Texas"
+              ]
+            },
+            {
+              "key":"U",
+              "names":[
+                "Utah"
+              ]
+            },
+            {
+              "key":"V",
+              "names":[
+                "Vermont",
+                "Virginia"
+              ]
+            },
+            {
+              "key":"W",
+              "names":[
+                "Washington",
+                "West Virginia",
+                "Wisconsin",
+                "Wyoming"
+              ]
+            }
+        ],
+        "validators": [
+            {
+                "required": true
+            }
+        ]
+    }
+]

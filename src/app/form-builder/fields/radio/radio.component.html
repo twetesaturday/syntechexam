@@ -1,0 +1,44 @@
+<div [formGroup]="form">
+    <mat-label 
+        [attr.for]="control.label">
+        {{control.label}}
+    </mat-label>
+    <mat-radio-group 
+        aria-label="Select an option" 
+        [formControlName]="control.id">
+        <mat-radio-button 
+            *ngFor="let option of control.options" 
+            value="{{ option.key }}"
+            (change)="onRadioChange($event)">
+            {{ option.label }}
+        </mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field 
+        *ngIf="isOthersSelected" 
+        appearance="fill">
+        <mat-label>{{ control.label }}</mat-label>
+        <mat-chip-list #chipList 
+            [formControlName]="control.id"    
+            aria-label="Custom Answer">
+            <mat-chip *ngFor="let customAnswer of customAnswers" (removed)="remove(customAnswer)">
+                {{ customAnswer.value }}
+                <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip>
+            <input
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)">
+            <mat-error 
+                *ngIf="isDirty || isTouched">
+                <span 
+                    *ngIf="!isValid">
+                    {{ control.label }} is required!
+                </span>
+            </mat-error>
+        </mat-chip-list>
+    </mat-form-field>
+</div>

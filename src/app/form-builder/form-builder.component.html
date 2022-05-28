@@ -1,0 +1,63 @@
+<form 
+    [formGroup]="formGroupData">
+    <mat-card>
+
+        <mat-card-header>
+            <mat-card-title>Questionnaire App by Tweets</mat-card-title>
+        </mat-card-header>
+        <div>{{ formGroupData.value | json }}</div>
+
+        <mat-card-content>
+
+            <div *ngFor="let control of formData">
+                <div [ngSwitch]="control.type">
+
+                    <div *ngSwitchCase="eFormControlType.Textbox">
+                        <text-box 
+                            [control]="control" 
+                            [form]="formGroupData">
+                        </text-box>
+                    </div>
+
+                    <div *ngSwitchCase="eFormControlType.Date">
+                        <date
+                            [control]="control" 
+                            [form]="formGroupData">
+                        </date>
+                    </div>
+
+                    <div *ngSwitchCase="eFormControlType.Radio">
+                        <radio
+                            [control]="control" 
+                            [form]="formGroupData">
+                        </radio>
+                    </div>
+
+                    <div *ngSwitchCase="eFormControlType.Dropdown">
+                        <dropdown
+                            [control]="control" 
+                            [form]="formGroupData">
+                        </dropdown>
+                    </div>
+
+                    <div *ngSwitchCase="eFormControlType.Autocomplete">
+                        <autocomplete
+                            [control]="control" 
+                            [form]="formGroupData">
+                        </autocomplete>
+                    </div>
+                </div>
+            </div>
+
+        </mat-card-content>
+        
+        <mat-card-actions>
+            <button 
+                type="submit" 
+                mat-raised-button 
+                color="primary">Save</button>
+            <strong>      Saved all values</strong>
+        </mat-card-actions>
+
+    </mat-card>
+</form>

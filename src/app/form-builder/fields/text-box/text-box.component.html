@@ -1,0 +1,36 @@
+<div [formGroup]="form">
+    <mat-form-field 
+        *ngIf="!control.multiline"
+        appearance="fill">
+        <mat-label>{{ control.label }}</mat-label>
+        <input 
+            matInput 
+            [formControlName]="control.id"
+            placeholder="{{ control.label }}">
+
+            <mat-error 
+                *ngIf="isDirty || isTouched">
+                <span 
+                    *ngIf="!isValid">
+                    {{ control.label }} is required!
+                </span>
+            </mat-error>
+    </mat-form-field>
+
+    <mat-form-field 
+        *ngIf="control.multiline"
+        appearance="fill">
+        <mat-label>{{ control.label }}</mat-label>
+        <textarea 
+            matInput
+            [formControlName]="control.id"></textarea>
+
+        <mat-error 
+            *ngIf="isDirty || isTouched">
+            <span 
+                *ngIf="!isValid">
+                {{ control.label }} is required!
+            </span>
+        </mat-error>
+    </mat-form-field>
+</div>
