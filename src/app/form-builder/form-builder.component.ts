@@ -14,6 +14,7 @@ export class FormBuilderComponent implements OnInit {
   @Input() formGroupData!: FormGroup;
 
   eFormControlType = FormControlType;
+  secondFormGroup!: FormGroup;
 
   constructor(private formService: FormService, private _formBuilder: FormBuilder) { }
 
@@ -24,6 +25,10 @@ export class FormBuilderComponent implements OnInit {
 
   initializeFormGroups() {
     this.formGroupData = this._formBuilder.group({
+      stateGroup: '',
+    });
+
+    this.secondFormGroup = this._formBuilder.group({
       stateGroup: '',
     });
   }
@@ -38,9 +43,13 @@ export class FormBuilderComponent implements OnInit {
 
   createFormControl() {
     this.formData.forEach((element: FormData) => {
-      element.validators.forEach((validator: FormValidators) => {
-        this.formGroupData.addControl(element.id, new FormControl('', this._getValidators(validator)));
-      })
+      if (element.validators) {
+        element.validators.forEach((validator: FormValidators) => {
+          this.formGroupData.addControl(element.id, new FormControl('', this._getValidators(validator)));
+        })
+      } else {
+        this.formGroupData.addControl(element.id, new FormControl(''));
+      }
     });
   }
 

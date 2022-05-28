@@ -4,9 +4,11 @@
         {{control.label}}
     </mat-label>
     <mat-radio-group 
+        class="radio-group"
         aria-label="Select an option" 
         [formControlName]="control.id">
         <mat-radio-button 
+            class="radio-button"
             *ngFor="let option of control.options" 
             value="{{ option.key }}"
             (change)="onRadioChange($event)">
@@ -15,6 +17,7 @@
     </mat-radio-group>
 
     <mat-form-field 
+        class="mat-form-field-wrapper"
         *ngIf="isOthersSelected" 
         appearance="fill">
         <mat-label>{{ control.label }}</mat-label>
