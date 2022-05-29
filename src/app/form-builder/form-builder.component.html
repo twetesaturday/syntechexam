@@ -42,7 +42,11 @@
                 </div>
                 <div class="mat-stepper-buttons">
                     <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
+                    <button 
+                        [disabled]="!goalsFormGroup.valid"
+                        mat-raised-button 
+                        color="primary" 
+                        matStepperNext>Next</button>
                 </div>
             </mat-step>
              <mat-step [stepControl]="dietFormGroup">
@@ -59,7 +63,11 @@
                 </div>
                 <div class="mat-stepper-buttons">
                     <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
+                    <button 
+                        [disabled]="!dietFormGroup.valid"
+                        mat-raised-button 
+                        color="primary" 
+                        matStepperNext>Next</button>
                 </div>
             </mat-step>
              <mat-step [stepControl]="lifestyleFormGroup">
@@ -76,7 +84,11 @@
                 </div>
                 <div class="mat-stepper-buttons">
                     <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
+                    <button 
+                        [disabled]="!lifestyleFormGroup.valid"
+                        mat-raised-button 
+                        color="primary" 
+                        matStepperNext>Next</button>
                 </div>
             </mat-step>
             <mat-step>
@@ -84,7 +96,7 @@
                 <p>You are now done.</p>
                 <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
+                <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
                 </div>
             </mat-step>
         </mat-stepper>
