@@ -1,4 +1,5 @@
 export type FormControlData = FormData[]
+export type Vitamins = VitaminData[]
 
 export interface FormData {
   id: string;
@@ -32,4 +33,10 @@ export interface FormOptionsGroup {
 
 export interface FormCustomAnswer {
   value: string;
+}
+
+export interface VitaminData {
+  name: string;
+  classification: string;
+  function: string;
 }

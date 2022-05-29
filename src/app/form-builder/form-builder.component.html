@@ -23,6 +23,7 @@
                 </div>
                 <div class="mat-stepper-buttons">
                     <button 
+                        (click)="onNextButtonClick(basicsFormGroup)"
                         [disabled]="!basicsFormGroup.valid"
                         mat-raised-button 
                         color="primary"
@@ -44,6 +45,7 @@
                 <div class="mat-stepper-buttons">
                     <button mat-button matStepperPrevious>Back</button>
                     <button 
+                        (click)="onNextButtonClick(goalsFormGroup)"
                         [disabled]="!goalsFormGroup.valid"
                         mat-raised-button 
                         color="primary" 
@@ -65,6 +67,7 @@
                 <div class="mat-stepper-buttons">
                     <button mat-button matStepperPrevious>Back</button>
                     <button 
+                        (click)="onNextButtonClick(dietFormGroup)"
                         [disabled]="!dietFormGroup.valid"
                         mat-raised-button 
                         color="primary" 
@@ -86,6 +89,7 @@
                 <div class="mat-stepper-buttons">
                     <button mat-button matStepperPrevious>Back</button>
                     <button 
+                        (click)="onNextButtonClick(lifestyleFormGroup, true)"
                         [disabled]="!lifestyleFormGroup.valid"
                         mat-raised-button 
                         color="primary" 
@@ -93,25 +97,59 @@
                 </div>
             </mat-step>
             <mat-step>
-                <ng-template matStepLabel>Done</ng-template>
-                <p>You are now done.</p>
-                <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
+                <ng-template matStepLabel>RECOMMENDATIONS</ng-template>
+                <ng-container *ngIf="isNovice">
+                    <mat-card>
+                        <mat-card-subtitle>Here is your result, {{ userName }}!</mat-card-subtitle>
+                        <mat-card-title>You are {{ classification }} in vitamins knowledge!</mat-card-title>
+                        <mat-card-content>
+                            <p>Total points: {{ totalPoints }}</p>
+                            <p>{{ userName }}, you are still a beginner in terms of knowledge regarding vitamins.</p>
+                            <p>We recommend you to take beginner friendly vitamins that are also essential to everyday well-being.</p>
+                            <mat-chip-list>
+                                <mat-chip *ngFor="let vitamin of userVitamins" color="accent" selected>{{ vitamin.name }}</mat-chip>
+                            </mat-chip-list>
+                        </mat-card-content>
+                    </mat-card>
+                </ng-container>    
+                <ng-container *ngIf="isCompetent">
+                    <mat-card>
+                        <mat-card-subtitle>Here is your result, {{ userName }}!</mat-card-subtitle>
+                        <mat-card-title>You are {{ classification }} in vitamins knowledge!</mat-card-title>
+                        <mat-card-content>
+                            <p>Total points: {{ totalPoints }}</p>
+                            <p>You are getting there {{ userName }}!</p>
+                            <p>We're glad you know your vitamins! Check these out for additional vitamins knowledge.</p>
+                            <mat-chip-list>
+                                <mat-chip *ngFor="let vitamin of userVitamins" color="accent" selected>{{ vitamin.name }}</mat-chip>
+                            </mat-chip-list>
+                        </mat-card-content>
+                    </mat-card>
+                </ng-container>    
+                <ng-container *ngIf="isExpert">
+                    <mat-card>
+                        <mat-card-subtitle>Here is your result, {{ userName }}!</mat-card-subtitle>
+                        <mat-card-title>You are {{ classification }} in vitamins knowledge!</mat-card-title>
+                        <mat-card-content>
+                            <p>Total points: {{ totalPoints }}</p>
+                            <p>You are the expert {{ userName }}.</p>
+                            <p>However, we still recommend you to take the ff:</p>
+                            <mat-chip-list>
+                                <mat-chip *ngFor="let vitamin of userVitamins" color="accent" selected>{{ vitamin.name }}</mat-chip>
+                            </mat-chip-list>
+                        </mat-card-content>
+                    </mat-card>
+                </ng-container>    
+                <div class="mat-stepper-buttons">
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
                 </div>
             </mat-step>
         </mat-stepper>
     </mat-card-content>
-    
-    <pre>BASICS FORM: {{ basicsFormGroup.value | json }}</pre>
+    <!-- FORM VALUES -->    
+    <!-- <pre>BASICS FORM: {{ basicsFormGroup.value | json }}</pre>
     <pre>GOALS FORM: {{ goalsFormGroup.value | json }}</pre>
     <pre>DIET FORM: {{ dietFormGroup.value | json }}</pre>
-    <pre>LIFESTYLE FORM: {{ lifestyleFormGroup.value | json }}</pre>
-    <!-- <mat-card-actions align="end">
-        <strong>Saved all values</strong>
-        <button 
-            type="submit" 
-            mat-raised-button 
-            color="primary">Save</button>
-    </mat-card-actions> -->
+    <pre>LIFESTYLE FORM: {{ lifestyleFormGroup.value | json }}</pre> -->
 </mat-card>

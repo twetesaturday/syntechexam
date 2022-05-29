@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Vitamin B1",
+        "classification": "novice",
+        "function": "It is essential for producing various enzymes that help break down blood sugar."
+    },
+    {
+        "name": "Vitamin B2",
+        "classification": "novice",
+        "function": "It is essential for the growth and development of body cells and helps metabolize food."
+    },
+    {
+        "name": "Vitamin B3",
+        "classification": "novice",
+        "function": "The body needs niacin for the cells to grow and work correctly."
+    },
+    {
+        "name": "Vitamin B5",
+        "classification": "competent",
+        "function": "It is necessary for producing energy and hormones."
+    },
+    {
+        "name": "Vitamin B6",
+        "classification": "expert",
+        "function": "It is vital for the formation of red blood cells."
+    },
+    {
+        "name": "Vitamin B7",
+        "classification": "expert",
+        "function": "It enables the body to metabolize proteins, fats, and carbohydrates. It also contributes to keratin, a structural protein in the skin, hair, and nails."
+    }
+]

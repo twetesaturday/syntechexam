@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormControlData, FormData, FormValidators } from '../interfaces/form-interface';
+import { FormControlData, FormData, FormValidators, Vitamins } from '../interfaces/form-interface';
 import { FormService } from '../services/form/form.service';
-import { EFormSections } from './form-builder.enum';
+import { EFormSections, EFormValidators, EUserClassification } from './form-builder.enum';
 
 @Component({
   selector: 'form-builder',
@@ -18,12 +18,21 @@ export class FormBuilderComponent implements OnInit {
 
   eFormSections = EFormSections;
 
+  totalPoints: number = 0;
+  isNovice!: boolean;
+  isCompetent!: boolean;
+  isExpert!: boolean;
+  userName!: any;
+  vitamins!: Vitamins;
+  userVitamins!: Vitamins;
+  classification!: string;
+
   constructor(private formService: FormService, private _formBuilder: FormBuilder) { }
-  // TODO:
-  // Print and show score on results page
+  
   ngOnInit() {
     this.initializeFormGroups();
     this.getFormData();
+    this.getVitaminData();
   }
 
   initializeFormGroups() {
@@ -41,6 +50,13 @@ export class FormBuilderComponent implements OnInit {
       .subscribe((response: FormControlData) => {
         this.formData = response;
         this.createFormControl(response);
+      })
+  }
+
+  getVitaminData () {
+    this.formService.getJSONVitaminData()
+      .subscribe((response: Vitamins) => {
+        this.vitamins = response;
       })
   }
 
@@ -71,6 +87,67 @@ export class FormBuilderComponent implements OnInit {
     }
   }
 
+  onNextButtonClick(formGroup: FormGroup, isFinal?: boolean) {
+    this._getPoints(formGroup);
+    this._getUserName(formGroup);
+
+    if (isFinal) {
+      this._getClassification();
+      this._getVitamins();
+    }
+  }
+
+  private _getClassification() {
+    if (this.totalPoints) {
+      this.isNovice = this.totalPoints > 0 && this.totalPoints < 40;
+      this.isCompetent = this.totalPoints > 40 && this.totalPoints < 80;
+      this.isExpert = this.totalPoints > 80 && this.totalPoints < 150;
+
+      if (this.isNovice) {
+        this.classification = EUserClassification.Novice;
+      } else if (this.isCompetent) {
+        this.classification = EUserClassification.Competent;
+      } else if (this.isExpert) {
+        this.classification = EUserClassification.Expert;
+      }
+    }
+  }
+
+  private _getVitamins() {
+    if (this.classification) {
+      this.userVitamins = this.vitamins.filter(vitamin => this.classification.toLowerCase() == vitamin.classification);
+    }
+  }
+
+  private _getUserName(formGroup: FormGroup) {
+    Object.entries(formGroup.value).forEach(entry => {
+      const [key, value] = entry;
+        if (key === 'first_name') {
+          this.userName = value;
+        }
+    })
+  }
+
+  private _getPoints(formGroup: FormGroup) {
+    Object.entries(formGroup.value).forEach(entry => {
+      const [key, value] = entry;
+      
+      this.formData.forEach((formEl: FormData) => {
+        if (key === formEl.id) {
+          if (formEl.options) {
+            formEl.options.forEach((option) => {
+              if (value === option.key) {
+                if (option.points) {
+                  this.totalPoints += option.points;
+                }
+              }
+            })
+          }
+        }
+      });
+    })
+  }
+
   private _getValidators(validator: FormValidators): any {
     const validatorsToAdd: any = [];
 
@@ -78,15 +155,15 @@ export class FormBuilderComponent implements OnInit {
       const [key, value] = entry;
 
       switch (key) {
-        case 'required':
+        case EFormValidators.Required:
           if (value) {
             validatorsToAdd.push(Validators.required);
           }
         break;
-        case 'minLength':
+        case EFormValidators.MinLength:
           validatorsToAdd.push(Validators.minLength(value));
           break;
-        case 'email':
+        case EFormValidators.Email:
           if (value) {
             validatorsToAdd.push(Validators.email);
           }

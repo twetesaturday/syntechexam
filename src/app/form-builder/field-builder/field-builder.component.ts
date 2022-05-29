@@ -18,20 +18,4 @@ export class FieldBuilderComponent {
   totalPoints: number = 0;
 
   constructor() { }
-
-  onRadioValueSelect(event: any) {
-    // TODO: Count points on next button
-    // console.log('SELECTED RADIO VALUE', event);
-    const selectedValue = event.selectedValue;
-    const control = event.control;
-    if (event) {
-       const selectedOption = control.options.find((option: any) => option.key === selectedValue);
-      //  console.log('HELLO', selectedOption.points);
-       if (selectedOption.points) {
-        this.totalPoints += selectedOption.points;
-       }
-    }
-    // console.log('TOTAL POINTS', this.totalPoints);
-  }
-
 }

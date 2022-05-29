@@ -18,3 +18,9 @@ export enum EFormValidators {
     MinLength = 'minLength',
     Email = 'email'
 }
+
+export enum EUserClassification {
+    Novice = 'NOVICE',
+    Competent = 'COMPETENT',
+    Expert = 'EXPERT'
+}

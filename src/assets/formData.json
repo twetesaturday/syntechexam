@@ -29,148 +29,122 @@
       "type": "autocomplete",
       "optionsGroup": [
         {
-          "key":"A",
+          "key":"MM",
           "names":[
-            "Alabama",
-            "Alaska",
-            "Arizona",
-            "Arkansas"
+            "Caloocan",
+            "Las Piñas",
+            "Makati",
+            "Malabon",
+            "Mandaluyong",
+            "Manila",
+            "Marikina",
+            "Muntinlupa",
+            "Navotas",
+            "Parañaque",
+            "Pasay",
+            "Pasig",
+            "Pateros",
+            "Quezon",
+            "San Juan",
+            "Taguig",
+            "Valenzuela"
           ]
         },
         {
-          "key":"C",
+          "key":"ABR",
           "names":[
-            "California",
-            "Colorado",
-            "Connecticut"
+            "Bangued",
+            "Boliney",
+            "Bucay",
+            "Bucloc",
+            "Daguioman",
+            "Danglas",
+            "Dolores",
+            "La Paz",
+            "Lacub",
+            "Lagangilang",
+            "Lagayan",
+            "Langiden",
+            "Licuan-Baay",
+            "Luba",
+            "Malibcong",
+            "Manabo",
+            "Peñarrubia",
+            "Pidigan",
+            "Pilar",
+            "Sallapadan",
+            "San Isidro",
+            "San Juan",
+            "San Quintin",
+            "Tayum",
+            "Tineg",
+            "Tubo",
+            "Villaviciosa"
           ]
         },
         {
-          "key":"D",
+          "key":"APA",
           "names":[
-            "Delaware"
+            "Calanasan",
+            "Conner",
+            "Flora",
+            "Kabugao",
+            "Luna",
+            "Pudtol",
+            "Santa Marcela"
           ]
         },
         {
-          "key":"F",
+          "key":"BEN",
           "names":[
-            "Florida"
+            "Atok",
+            "Baguio",
+            "Bakun",
+            "Bokod",
+            "Buguias",
+            "Itogon",
+            "Kabayan",
+            "Kapangan",
+            "Kibungan",
+            "La Trinidad",
+            "Mankayan",
+            "Sablan",
+            "Tuba",
+            "Tublay"
           ]
         },
         {
-          "key":"G",
+          "key":"ZAS",
           "names":[
-            "Georgia"
-          ]
-        },
-        {
-          "key":"H",
-          "names":[
-            "Hawaii"
-          ]
-        },
-        {
-          "key":"I",
-          "names":[
-            "idaho",
-            "Illinois",
-            "Indiana",
-            "Iowa"
-          ]
-        },
-        {
-          "key":"K",
-          "names":[
-            "Kansas",
-            "Kentucky"
-          ]
-        },
-        {
-          "key":"L",
-          "names":[
-            "Louisiana"
-          ]
-        },
-        {
-          "key":"M",
-          "names":[
-            "Maine",
-            "Maryland",
-            "Massachusetts",
-            "Michigan",
-            "Minnesota",
-            "Mississippi",
-            "Missouri",
-            "Montana"
-          ]
-        },
-        {
-          "key":"N",
-          "names":[
-            "Nebraska",
-            "Nevada",
-            "New Hampshire",
-            "New Jersey",
-            "New Mexico",
-            "New York",
-            "North Carolina",
-            "North Dakota"
-          ]
-        },
-        {
-          "key":"O",
-          "names":[
-            "Ohio",
-            "Oklahoma",
-            "Oregon"
-          ]
-        },
-        {
-          "key":"P",
-          "names":[
-            "Pennsylvania"
-          ]
-        },
-        {
-          "key":"R",
-          "names":[
-            "Rhode Island"
-          ]
-        },
-        {
-          "key":"S",
-          "names":[
-            "South Carolina",
-            "South Dakota"
-          ]
-        },
-        {
-          "key":"T",
-          "names":[
-            "Tennessee",
-            "Texas"
-          ]
-        },
-        {
-          "key":"U",
-          "names":[
-            "Utah"
-          ]
-        },
-        {
-          "key":"V",
-          "names":[
-            "Vermont",
-            "Virginia"
-          ]
-        },
-        {
-          "key":"W",
-          "names":[
-            "Washington",
-            "West Virginia",
-            "Wisconsin",
-            "Wyoming"
+            "Aurora",
+            "Bayog",
+            "Dimataling",
+            "Dinas",
+            "Dumalinao",
+            "Dumingag",
+            "Guipos",
+            "Josefina",
+            "Kumalarang",
+            "Labangan",
+            "Lakewood",
+            "Lapuyan",
+            "Mahayag",
+            "Margosatubig",
+            "Midsalip",
+            "Molave",
+            "Pagadian", 
+            "Pitogo",
+            "Ramon Magsaysay",
+            "San Miguel",
+            "San Pablo",
+            "Sominot",
+            "Tabina",
+            "Tambulig",
+            "Tigbao",
+            "Tukuran",
+            "Vincenzo A. Sagun",
+            "Zamboanga"
+          
           ]
         }
       ],
@@ -343,12 +317,62 @@
       {
         "key": "heart",
         "label": "Heart",
-        "points": 0
+        "points": 0,
+        "subQuestion": [
+          {
+            "id": "heart_issues_history",
+            "label": "Do you have a family history of heart disease?",
+            "section": "goals",
+            "type": "radio",
+            "options": [
+              {
+                "key": "yes",
+                "label": "Yes",
+                "points": 0
+              },
+              {
+                "key": "no",
+                "label": "No",
+                "points": 5
+              }
+            ],
+            "validators": [
+              {
+                "required": true
+              }
+            ]
+          }
+        ]
       },
       {
         "key": "skin",
         "label": "Skin",
-        "points": 0
+        "points": 0,
+        "subQuestion": [
+          {
+            "id": "skin_issues_history",
+            "label": "Do you have history of skin issues?",
+            "section": "goals",
+            "type": "radio",
+            "options": [
+              {
+                "key": "yes",
+                "label": "Yes",
+                "points": 0
+              },
+              {
+                "key": "no",
+                "label": "No",
+                "points": 5
+              }
+            ],
+            "validators": [
+              {
+                "required": true
+              }
+            ]
+          }
+        ]
       },
       {
         "key": "joints",
@@ -383,7 +407,32 @@
       {
         "key": "bones",
         "label": "Bones",
-        "points": 0
+        "points": 0,
+        "subQuestion": [
+          {
+            "id": "bone_issues_history",
+            "label": "Do you have a family history of bone issues (such as osteoporosis)?",
+            "section": "goals",
+            "type": "radio",
+            "options": [
+              {
+                "key": "yes",
+                "label": "Yes",
+                "points": 0
+              },
+              {
+                "key": "no",
+                "label": "No",
+                "points": 5
+              }
+            ],
+            "validators": [
+              {
+                "required": true
+              }
+            ]
+          }
+        ]
       }
     ],
     "validators": [
@@ -912,7 +961,7 @@
       "multiline": true,
       "validators": [
           {
-              "required": true
+              "required": false
           }
       ]
   }
