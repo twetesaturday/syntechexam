@@ -3,7 +3,7 @@ export type FormControlData = FormData[]
 export interface FormData {
   id: string;
   label: string;
-  section: string;
+  section?: string;
   type: string;
   options?: FormOption[];
   optionsGroup?: FormOptionsGroup[];
