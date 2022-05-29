@@ -1,5 +1,4 @@
 <div [formGroup]="form">
-    <!-- // AUTOCOMPLETE NOT WORKIN ANYMORE -->
     <mat-form-field 
         class="mat-form-field-wrapper"
         appearance="fill">
@@ -13,7 +12,7 @@
         <mat-autocomplete #autoGroup="matAutocomplete">
             <mat-optgroup *ngFor="let group of autocompleteGroupOptions | async" [label]="group.key">
                 <mat-option *ngFor="let name of group.names" [value]="name">
-                {{name}}
+                {{ name }}
                 </mat-option>
             </mat-optgroup>
         </mat-autocomplete>
@@ -21,11 +20,9 @@
             *ngIf="form.get(control.id)?.dirty || form.get(control.id)?.touched">
             <span 
                 *ngIf="!form.get(control.id)?.valid">
-                {{ control.label }} is required!
+                {{ getErrorMessage() }}
             </span>
         </mat-error>
     </mat-form-field> 
-
-    <!-- // TODO: Matchips autocomplete -->
 </div>
 

@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { map, startWith } from 'rxjs/operators';
 import { FormData, FormOptionsGroup } from '../../../interfaces/form-interface';
+import { FormValidators } from '../../form-builder.enum';
 
 export const _filter = (opt: string[], value: string): string[] => {
   const filterValue = value.toLowerCase();
@@ -30,7 +31,7 @@ export class AutocompleteComponent implements OnInit {
   get isValid() { return this.form.controls[this.control.id].valid; }
   get isDirty () { return this.form.controls[this.control.id].dirty; }
   get isTouched() { return this.form.controls[this.control.id].touched; }
-  
+
   constructor() { }
 
   ngOnInit() {
@@ -42,13 +43,35 @@ export class AutocompleteComponent implements OnInit {
     );
   }
 
+  getErrorMessage() {
+    let errorMesage = '';
+    this.control.validators.forEach((validator) => {
+      const validators: string[] = Object.keys(validator);
+      
+      validators.forEach((validatorStr) => {
+        switch(validatorStr) {
+          case FormValidators.Required:
+            errorMesage = `${this.control.label} is required!`;
+            break;
+          case FormValidators.MinLength:
+            errorMesage = `${this.control.label} should be at least 10 characters`
+            break;
+          case FormValidators.Email:
+            errorMesage = `${this.control.label} is not a valid email`
+            break;
+        }
+      })
+    })
+    return errorMesage;
+  }
+
   private _filterGroup(value: string): FormOptionsGroup[] {
     if (value) {
       return this.autocompleteGroups
         .map(group => ({key: group.key, names: _filter(group.names, value)}))
         .filter(group => group.names.length > 0);
     }
-
+    
     return this.autocompleteGroups;
   }
 

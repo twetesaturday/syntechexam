@@ -1,5 +1,8 @@
-<div [formGroup]="form">
-    <mat-label 
+<div 
+    class="radio-form"
+    [formGroup]="form">
+    <mat-label
+        class="mat-label"
         [attr.for]="control.label">
         {{control.label}}
     </mat-label>
@@ -16,9 +19,10 @@
         </mat-radio-button>
     </mat-radio-group>
 
+    <!-- IF RADIO HAS CUSTOM ANSWERS -->
     <mat-form-field 
         class="mat-form-field-wrapper"
-        *ngIf="isOthersSelected" 
+        *ngIf="hasCustomAnswer" 
         appearance="fill">
         <mat-label>{{ optionLabel.toUpperCase() }}</mat-label>
         <mat-chip-list #chipList [formControlName]="control.id">
@@ -37,7 +41,7 @@
                 *ngIf="isDirty || isTouched">
                 <span 
                     *ngIf="!isValid">
-                    {{ control.label }} is required!
+                    {{ getErrorMessage() }}
                 </span>
             </mat-error>
         </mat-chip-list>

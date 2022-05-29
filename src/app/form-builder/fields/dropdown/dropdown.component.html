@@ -11,7 +11,7 @@
             *ngIf="isDirty || isTouched">
             <span 
                 *ngIf="!isValid">
-                {{ control.label }} is required!
+                {{ getErrorMessage() }}
             </span>
         </mat-error>
     </mat-form-field>
