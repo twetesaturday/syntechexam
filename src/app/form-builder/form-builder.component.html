@@ -78,10 +78,6 @@
             <mat-step>
                 <ng-template matStepLabel>Done</ng-template>
                 <p>You are now done.</p>
-                <pre>BASICS FORM: {{ basicsFormGroup.value | json }}</pre>
-                <pre>GOALS FORM: {{ goalsFormGroup.value | json }}</pre>
-                <pre>DIET FORM: {{ dietFormGroup.value | json }}</pre>
-                <pre>LIFESTYLE FORM: {{ lifestyleFormGroup.value | json }}</pre>
                 <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button (click)="stepper.reset()">Reset</button>
@@ -90,6 +86,10 @@
         </mat-stepper>
     </mat-card-content>
     
+    <pre>BASICS FORM: {{ basicsFormGroup.value | json }}</pre>
+    <pre>GOALS FORM: {{ goalsFormGroup.value | json }}</pre>
+    <pre>DIET FORM: {{ dietFormGroup.value | json }}</pre>
+    <pre>LIFESTYLE FORM: {{ lifestyleFormGroup.value | json }}</pre>
     <!-- <mat-card-actions align="end">
         <strong>Saved all values</strong>
         <button 

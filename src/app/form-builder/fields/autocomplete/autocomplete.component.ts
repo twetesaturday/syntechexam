@@ -1,8 +1,6 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { map, startWith } from 'rxjs/operators';
 import { FormData, FormOptionsGroup } from '../../../interfaces/form-interface';
@@ -28,22 +26,12 @@ export class AutocompleteComponent implements OnInit {
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  filteredFruits: Observable<string[]>;
-  fruitCtrl = new FormControl();
-  fruits: string[] = ['Lemon'];
-  allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
-
-  @ViewChild('fruitInput') fruitInput!: ElementRef<HTMLInputElement>;
   
   get isValid() { return this.form.controls[this.control.id].valid; }
   get isDirty () { return this.form.controls[this.control.id].dirty; }
   get isTouched() { return this.form.controls[this.control.id].touched; }
   
-  constructor() {
-    this.filteredFruits = this.form.controls[this.control.id].valueChanges.pipe(
-      startWith(null),
-      map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
-  }
+  constructor() { }
 
   ngOnInit() {
     this._setAutocompleteGroups(this.control);
@@ -52,34 +40,6 @@ export class AutocompleteComponent implements OnInit {
       startWith(""),
       map(value => this._filterGroup(value))
     );
-  }
-
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
-
-    // Add our fruit
-    if (value) {
-      this.fruits.push(value);
-    }
-
-    // Clear the input value
-    event.chipInput!.clear();
-
-    this.form.controls.id.setValue(null);
-  }
-
-  remove(name: string): void {
-    const index = this.fruits.indexOf(name);
-
-    if (index >= 0) {
-      this.autocompleteGroups.splice(index, 1);
-    }
-  }
-
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.fruits.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
-    this.form.controls[this.control.id].setValue(null);
   }
 
   private _filterGroup(value: string): FormOptionsGroup[] {
@@ -96,11 +56,5 @@ export class AutocompleteComponent implements OnInit {
     if (element.type === 'autocomplete') {
       this.autocompleteGroups = element.optionsGroup!;
     }
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.allFruits.filter(fruit => fruit.toLowerCase().includes(filterValue));
   }
 }

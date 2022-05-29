@@ -16,6 +16,7 @@ export class RadioComponent {
   @Output() selectedRadioValue = new EventEmitter<object>();
 
   isOthersSelected = false;
+  optionLabel!: string;
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   customAnswers: FormCustomAnswer[] = [];
@@ -35,6 +36,8 @@ export class RadioComponent {
       control: this.control
     });
 
+    this.optionLabel = selected;
+
     if (selected === 'others') {
       this.isOthersSelected = true;
     } else {
@@ -46,9 +49,17 @@ export class RadioComponent {
     const value = (event.value || '').trim();
 
     if (value) {
-      this.customAnswers.push({value: value});
+      const parsedValue = value.toLowerCase().replace(/ +/g, "");
+      const hasExistingValue = this.control.options?.find((option) => {
+        const parsedOptionLabel = option.label.toLowerCase().replace(/ +/g, "");
+        return parsedValue === parsedOptionLabel;
+      });
       
-      this.form.controls[this.control.id].setValue(this.customAnswers);
+      if (hasExistingValue === undefined) {
+        this.customAnswers.push({value: value});
+    
+        this.form.controls[this.control.id].setValue(this.customAnswers);
+      }
     }
 
     // Clear the input value

@@ -20,7 +20,7 @@
         class="mat-form-field-wrapper"
         *ngIf="isOthersSelected" 
         appearance="fill">
-        <mat-label>{{ control.label }}</mat-label>
+        <mat-label>{{ optionLabel.toUpperCase() }}</mat-label>
         <mat-chip-list #chipList [formControlName]="control.id">
             <mat-chip *ngFor="let customAnswer of customAnswers" (removed)="remove(customAnswer)">
                 {{ customAnswer.value }}

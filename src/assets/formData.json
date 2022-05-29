@@ -15,7 +15,7 @@
           "id": "emailAddress",
           "label": "Email",
           "type": "textbox",
-          "section": "goals",
+          "section": "basics",
           "validators": [
               {
                   "required": true,
@@ -622,9 +622,14 @@
     "type": "radio",
     "options": [
       {
-          "key": "wheat_gluten",
-          "label": "Wheat and/or Gluten",
+          "key": "wheat",
+          "label": "Wheat",
           "points": 0
+      },
+      {
+        "key": "gluten",
+        "label": "Gluten",
+        "points": 0
       },
       {
         "key": "fish",
