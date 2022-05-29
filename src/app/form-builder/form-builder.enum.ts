@@ -12,3 +12,9 @@ export enum FormSections {
     Diet = 'diet', 
     Lifestyle = 'lifestyle'
 }
+
+export enum FormValidators {
+    Required = 'required',
+    MinLength = 'minLength',
+    Email = 'email'
+}
