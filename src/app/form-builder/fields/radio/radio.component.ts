@@ -38,7 +38,9 @@ export class RadioComponent {
     });
 
     this.optionLabel = selected;
+  }
 
+  hasCustomAnwerSetter(selected: string) {
     this.control.options?.forEach((option) => {
       if (selected === option.key) {
         if (option.customAnswer) {
