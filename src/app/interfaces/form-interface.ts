@@ -3,7 +3,7 @@ export type FormControlData = FormData[]
 export interface FormData {
   id: string;
   label: string;
-  section?: string;
+  section: string;
   type: string;
   options?: FormOption[];
   optionsGroup?: FormOptionsGroup[];
@@ -22,6 +22,7 @@ export interface FormOption {
   label: string;
   points?: number;
   customAnswer?: FormCustomAnswer[];
+  subQuestion?: FormControlData
 }
 
 export interface FormOptionsGroup {

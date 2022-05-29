@@ -1,10 +1,10 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatRadioChange } from '@angular/material/radio';
-import { FormCustomAnswer, FormData } from '../../../interfaces/form-interface';
-import { FormValidators } from '../../form-builder.enum';
+import { FormControlData, FormCustomAnswer, FormData, FormValidators } from '../../../interfaces/form-interface';
+import { EFormValidators } from '../../form-builder.enum';
 
 @Component({
   selector: 'radio',
@@ -17,17 +17,18 @@ export class RadioComponent {
   @Output() selectedRadioValue = new EventEmitter<object>();
 
   hasCustomAnswer = false;
+  hasSubQuestion = false;
   optionLabel!: string;
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   customAnswers: FormCustomAnswer[] = [];
+  subQuestions!: FormControlData;
 
   get isValid() { return this.form.controls[this.control.id].valid; }
   get isDirty () { return this.form.controls[this.control.id].dirty; }
   get isTouched() { return this.form.controls[this.control.id].touched; }
   
-  constructor() {}
-
+  constructor() { }
 
   onRadioChange(event: MatRadioChange) {
     let selected = event.value;
@@ -39,6 +40,7 @@ export class RadioComponent {
 
     this.optionLabel = selected;
     this.hasCustomAnwerChecker(selected);
+    this.hasSubQuestionChecker(selected);
   }
 
   hasCustomAnwerChecker(selected: string) {
@@ -51,6 +53,34 @@ export class RadioComponent {
         }
       }
     })
+  }
+
+  hasSubQuestionChecker(selected: string) {
+    this.control.options?.forEach((option) => {
+      if (selected === option.key) {
+        if (option.subQuestion) {
+          this.subQuestions = option.subQuestion;
+          this.hasSubQuestion = true;
+          this.createFormControl(option.subQuestion);
+        } else {
+          this.hasSubQuestion = false;
+        }
+      }
+    })
+  }
+
+  createFormControl(formData: FormControlData) {
+    formData.forEach((element: FormData) => {
+      if (element.validators) {
+        element.validators.forEach((validator: FormValidators) => {
+          this.createFormControlWithValidators(element, validator);
+        })
+      }
+    });
+  }
+
+  createFormControlWithValidators(element: FormData, validator: FormValidators) {
+    this.form.addControl(element.id, new FormControl('', this._getValidators(validator)));
   }
 
   add(event: MatChipInputEvent): void {
@@ -89,18 +119,46 @@ export class RadioComponent {
       
       validators.forEach((validatorStr) => {
         switch(validatorStr) {
-          case FormValidators.Required:
+          case EFormValidators.Required:
             errorMesage = `${this.control.label} is required!`;
             break;
-          case FormValidators.MinLength:
+          case EFormValidators.MinLength:
             errorMesage = `${this.control.label} should be at least 10 characters`
             break;
-          case FormValidators.Email:
+          case EFormValidators.Email:
             errorMesage = `${this.control.label} is not a valid email`
             break;
         }
       })
     })
     return errorMesage;
+  }
+
+  private _getValidators(validator: FormValidators): any {
+    const validatorsToAdd: any = [];
+
+    Object.entries(validator).forEach(entry => {
+      const [key, value] = entry;
+
+      switch (key) {
+        case 'required':
+          if (value) {
+            validatorsToAdd.push(Validators.required);
+          }
+        break;
+        case 'minLength':
+          validatorsToAdd.push(Validators.minLength(value));
+          break;
+        case 'email':
+          if (value) {
+            validatorsToAdd.push(Validators.email);
+          }
+        break;
+        default:
+          break;
+      }
+    })
+
+    return validatorsToAdd;
   }
 }

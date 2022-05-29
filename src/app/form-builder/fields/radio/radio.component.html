@@ -6,18 +6,28 @@
         [attr.for]="control.label">
         {{control.label}}
     </mat-label>
-    <mat-radio-group 
+
+    <mat-radio-group
         class="radio-group"
         aria-label="Select an option" 
         [formControlName]="control.id">
         <mat-radio-button 
             class="radio-button"
-            *ngFor="let option of control.options" 
+            *ngFor="let option of control.options"
             value="{{ option.key }}"
             (change)="onRadioChange($event)">
             {{ option.label }}
         </mat-radio-button>
     </mat-radio-group>
+
+    <div *ngIf="hasSubQuestion">
+        <div *ngFor="let subquestion of subQuestions">
+            <field-builder 
+                [control]="subquestion" 
+                [form]="form">
+            </field-builder>
+        </div>
+    </div>
 
     <!-- IF RADIO HAS CUSTOM ANSWERS -->
     <mat-form-field 

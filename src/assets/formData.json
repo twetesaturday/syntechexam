@@ -6,8 +6,7 @@
         "type": "textbox",
         "validators": [
             {
-                "required": true,
-                "minLength": 10
+              "required": true
             }
         ]
     },
@@ -18,15 +17,15 @@
           "section": "basics",
           "validators": [
               {
-                  "required": true,
-                  "email": true
+                "required": true,
+                "email": true
               }
           ]
     },
     {
       "id": "city",
       "label": "City",
-      "section": "lifestyle",
+      "section": "basics",
       "type": "autocomplete",
       "optionsGroup": [
         {
@@ -354,7 +353,32 @@
       {
         "key": "joints",
         "label": "Joints",
-        "points": 0
+        "points": 0, 
+        "subQuestion": [
+          {
+            "id": "bone_issues_history",
+            "label": "Do you have a family history of bone issues (such as osteoporosis)?",
+            "section": "goals",
+            "type": "radio",
+            "options": [
+              {
+                "key": "yes",
+                "label": "Yes",
+                "points": 0
+              },
+              {
+                "key": "no",
+                "label": "No",
+                "points": 5
+              }
+            ],
+            "validators": [
+              {
+                "required": true
+              }
+            ]
+          }
+        ]
       },
       {
         "key": "bones",
