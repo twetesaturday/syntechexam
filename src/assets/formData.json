@@ -622,9 +622,9 @@
     "type": "radio",
     "options": [
       {
-          "key": "wheat",
-          "label": "Wheat",
-          "points": 0
+        "key": "wheat",
+        "label": "Wheat",
+        "points": 0
       },
       {
         "key": "gluten",
@@ -642,10 +642,10 @@
         "points": 0
       },
       {
-          "key": "others",
-          "label": "Others",
-          "points": 5,
-          "customAnswer": []
+        "key": "others",
+        "label": "Others",
+        "points": 5,
+        "customAnswer": []
       }
     ],
     "validators": [
