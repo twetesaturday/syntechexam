@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatRadioChange } from '@angular/material/radio';
 import { FormCustomAnswer, FormData } from '../../../interfaces/form-interface';
+import { FormValidators } from '../../form-builder.enum';
 
 @Component({
   selector: 'radio',
@@ -15,7 +16,7 @@ export class RadioComponent {
   @Input() form!: FormGroup;
   @Output() selectedRadioValue = new EventEmitter<object>();
 
-  isOthersSelected = false;
+  hasCustomAnswer = false;
   optionLabel!: string;
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
@@ -38,11 +39,15 @@ export class RadioComponent {
 
     this.optionLabel = selected;
 
-    if (selected === 'others') {
-      this.isOthersSelected = true;
-    } else {
-      this.isOthersSelected = false;
-    }
+    this.control.options?.forEach((option) => {
+      if (selected === option.key) {
+        if (option.customAnswer) {
+          this.hasCustomAnswer = true;
+        } else {
+          this.hasCustomAnswer = false;
+        }
+      }
+    })
   }
 
   add(event: MatChipInputEvent): void {
@@ -72,5 +77,27 @@ export class RadioComponent {
     if (index >= 0) {
       this.customAnswers.splice(index, 1);
     }
+  }
+
+  getErrorMessage() {
+    let errorMesage = '';
+    this.control.validators.forEach((validator) => {
+      const validators: string[] = Object.keys(validator);
+      
+      validators.forEach((validatorStr) => {
+        switch(validatorStr) {
+          case FormValidators.Required:
+            errorMesage = `${this.control.label} is required!`;
+            break;
+          case FormValidators.MinLength:
+            errorMesage = `${this.control.label} should be at least 10 characters`
+            break;
+          case FormValidators.Email:
+            errorMesage = `${this.control.label} is not a valid email`
+            break;
+        }
+      })
+    })
+    return errorMesage;
   }
 }
