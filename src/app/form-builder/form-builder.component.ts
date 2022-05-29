@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormControlData, FormData, FormValidators } from '../interfaces/form-interface';
 import { FormService } from '../services/form/form.service';
-import { FormSections } from './form-builder.enum';
+import { EFormSections } from './form-builder.enum';
 
 @Component({
   selector: 'form-builder',
@@ -16,10 +16,11 @@ export class FormBuilderComponent implements OnInit {
   @Input() dietFormGroup!: FormGroup;
   @Input() lifestyleFormGroup!: FormGroup;
 
-  eFormSections = FormSections;
+  eFormSections = EFormSections;
 
   constructor(private formService: FormService, private _formBuilder: FormBuilder) { }
-
+  // TODO:
+  // Print and show score on results page
   ngOnInit() {
     this.initializeFormGroups();
     this.getFormData();
@@ -55,16 +56,16 @@ export class FormBuilderComponent implements OnInit {
 
   createFormControlWithValidators(element: FormData, validator: FormValidators) {
     switch(element.section) {
-      case FormSections.Basics:
+      case EFormSections.Basics:
         this.basicsFormGroup.addControl(element.id, new FormControl('', this._getValidators(validator)));
         break;
-      case FormSections.Goals:
+      case EFormSections.Goals:
         this.goalsFormGroup.addControl(element.id, new FormControl('', this._getValidators(validator)));
         break;
-      case FormSections.Diet:
+      case EFormSections.Diet:
         this.dietFormGroup.addControl(element.id, new FormControl('', this._getValidators(validator)));
         break;
-      case FormSections.Lifestyle:
+      case EFormSections.Lifestyle:
         this.lifestyleFormGroup.addControl(element.id, new FormControl('', this._getValidators(validator)));
         break;
     }

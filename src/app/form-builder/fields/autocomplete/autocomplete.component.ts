@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { map, startWith } from 'rxjs/operators';
 import { FormData, FormOptionsGroup } from '../../../interfaces/form-interface';
-import { FormValidators } from '../../form-builder.enum';
+import { EFormValidators } from '../../form-builder.enum';
 
 export const _filter = (opt: string[], value: string): string[] => {
   const filterValue = value.toLowerCase();
@@ -50,13 +50,13 @@ export class AutocompleteComponent implements OnInit {
       
       validators.forEach((validatorStr) => {
         switch(validatorStr) {
-          case FormValidators.Required:
+          case EFormValidators.Required:
             errorMesage = `${this.control.label} is required!`;
             break;
-          case FormValidators.MinLength:
+          case EFormValidators.MinLength:
             errorMesage = `${this.control.label} should be at least 10 characters`
             break;
-          case FormValidators.Email:
+          case EFormValidators.Email:
             errorMesage = `${this.control.label} is not a valid email`
             break;
         }

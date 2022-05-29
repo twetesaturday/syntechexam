@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormData } from '../../interfaces/form-interface';
-import { FormControlType, FormSections } from '../form-builder.enum';
+import { EFormControlType, EFormSections } from '../form-builder.enum';
 
 @Component({
   selector: 'field-builder',
@@ -12,8 +12,8 @@ export class FieldBuilderComponent {
   @Input() control!: FormData;
   @Input() form!: FormGroup;
   
-  eFormControlType = FormControlType;
-  eFormSections = FormSections;
+  eFormControlType = EFormControlType;
+  eFormSections = EFormSections;
   
   totalPoints: number = 0;
 

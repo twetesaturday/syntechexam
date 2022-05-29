@@ -1,4 +1,4 @@
-export enum FormControlType {
+export enum EFormControlType {
     Textbox = 'textbox',
     Date = 'date',
     Radio = 'radio', 
@@ -6,14 +6,14 @@ export enum FormControlType {
     Autocomplete = 'autocomplete'
 }
 
-export enum FormSections {
+export enum EFormSections {
     Basics = 'basics', 
     Goals = 'goals',
     Diet = 'diet', 
     Lifestyle = 'lifestyle'
 }
 
-export enum FormValidators {
+export enum EFormValidators {
     Required = 'required',
     MinLength = 'minLength',
     Email = 'email'
