@@ -21,7 +21,11 @@
                     </div>
                 </div>
                 <div class="mat-stepper-buttons">
-                    <button mat-button matStepperNext>Next</button>
+                    <button 
+                        [disabled]="!basicsFormGroup.valid"
+                        mat-raised-button 
+                        color="primary"
+                        matStepperNext>Next</button>
                 </div>
             </mat-step>
             <mat-step [stepControl]="goalsFormGroup">
