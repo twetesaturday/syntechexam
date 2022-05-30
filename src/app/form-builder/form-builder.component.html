@@ -101,6 +101,7 @@
                 <ng-container *ngIf="isNovice">
                     <mat-card>
                         <mat-card-subtitle>Here is your result, {{ userName }}!</mat-card-subtitle>
+                        <p>{{ formData.length }} questions</p>
                         <mat-card-title>You are {{ classification }} in vitamins knowledge!</mat-card-title>
                         <mat-card-content>
                             <p>Total points: {{ totalPoints }}</p>
@@ -115,6 +116,7 @@
                 <ng-container *ngIf="isCompetent">
                     <mat-card>
                         <mat-card-subtitle>Here is your result, {{ userName }}!</mat-card-subtitle>
+                        <p>{{ formData.length }} questions</p>
                         <mat-card-title>You are {{ classification }} in vitamins knowledge!</mat-card-title>
                         <mat-card-content>
                             <p>Total points: {{ totalPoints }}</p>
@@ -129,6 +131,7 @@
                 <ng-container *ngIf="isExpert">
                     <mat-card>
                         <mat-card-subtitle>Here is your result, {{ userName }}!</mat-card-subtitle>
+                        <p>{{ formData.length }} questions</p>
                         <mat-card-title>You are {{ classification }} in vitamins knowledge!</mat-card-title>
                         <mat-card-content>
                             <p>Total points: {{ totalPoints }}</p>

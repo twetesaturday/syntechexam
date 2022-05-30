@@ -20,6 +20,16 @@
         "function": "It is necessary for producing energy and hormones."
     },
     {
+        "name": "Vitamin B12",
+        "classification": "competent",
+        "function": "It also helps form red blood cells and maintain the central nervous system."
+    },
+    {
+        "name": "Niacin",
+        "classification": "competent",
+        "function": "A B vitamin that helps maintain healthy skin and nerves. It also has cholesterol-lowering effects at higher doses."
+    },
+    {
         "name": "Vitamin B6",
         "classification": "expert",
         "function": "It is vital for the formation of red blood cells."
